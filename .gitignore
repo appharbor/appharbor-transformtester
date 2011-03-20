@@ -1,0 +1,8 @@
+[Oo]bj
+[Bb]in
+deploy
+deploy/*
+*.csproj.user
+*.suo
+*.cache
+TestResults/

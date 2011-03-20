@@ -1,0 +1,113 @@
+﻿@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+	<div class="row">
+		<h1>
+			Web.config Transformation Tester</h1>
+	</div>
+	<div class="row">
+		<div class="fourcol">
+			<p>
+				This is a simple tool that lets you test <a href="http://msdn.microsoft.com/en-us/library/dd465318.aspx">
+					Web.config transformations</a>. Here's the <a href="http://msdn.microsoft.com/en-us/library/dd465326.aspx">
+						full syntax-guide at MSDN</a>.
+			</p>
+		</div>
+		<div class="fourcol">
+			<p>
+				Paste your web.config into the top text box and your transform into the second one.
+				Click the 'Transform' button to see the result.
+			</p>
+		</div>
+		<div class="fourcol last">
+			<p>
+				This tool was made for your enjoyment by <a href="http://appharbor.com">AppHarbor</a>,
+				the .NET Platform-as-a-Service.
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			<h2>
+				Web.config</h2>
+			<textarea class="code" cols="20" id="config" name="config" rows="2">
+@ViewBag.DefaultWebConfig
+			</textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			<h2>
+				Transform (eg. Web.Debug.config)</h2>
+			<textarea class="code" cols="20" id="transform" name="transform" rows="2">
+@ViewBag.DefaultTransform
+			</textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="twocol">
+			&nbsp;
+		</div>
+		<div class="twocol">
+			<input type="submit" value="Transform" onclick="transform();" />
+		</div>
+		<div class="eightcol last">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			<h2>
+				Result</h2>
+			<textarea class="code" cols="20" id="result" name="result" rows="2">
+			</textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelvecol last">
+			<hr />
+			<p>
+				<a href="http://appharbor.com">Built, maintained and hosted by AppHarbor</a></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var configEditor;
+		var transformEditor;
+		var resultEditor;
+
+		function transform() {
+			resultEditor.setCode('');
+			$.post('transform',
+				{ webConfigXml: configEditor.getCode(), transformXml: transformEditor.getCode() },
+				function (result, status, jqXHR) {
+					resultEditor.setCode(jqXHR.responseText);
+				});
+		}
+
+		function editor(id) {
+			return CodeMirror.fromTextArea(id, {
+				parserfile: "parsexml.js",
+				stylesheet: "assets/css/xmlcolors.css",
+				path: "assets/js/codemirror/",
+				continuousScanning: 500,
+				lineNumbers: true
+			});
+		}
+
+		configEditor = editor('config');
+		transformEditor = editor('transform');
+		resultEditor = editor('result');
+	</script>
+</div>
