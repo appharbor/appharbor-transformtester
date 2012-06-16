@@ -23,7 +23,7 @@ namespace AppHarbor.TransformTester.Controllers
 					var stringBuilder = new StringBuilder();
 					var xmlWriterSettings = new XmlWriterSettings();
 					xmlWriterSettings.Indent = true;
-					xmlWriterSettings.IndentChars = "	";
+					xmlWriterSettings.IndentChars = "    ";
 					using (var xmlTextWriter =
 						XmlTextWriter.Create(stringBuilder, xmlWriterSettings))
 					{
