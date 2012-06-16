@@ -33,21 +33,25 @@ namespace AppHarbor.TransformTester.Controllers
 				}
 				else
 				{
-					return Content(
-						new XDocument(
-							new XElement("error",
-								"Transformation failed for unkown reason")
-						).ToString(), "text/xml");
+					return ErrorXml("Transformation failed for unkown reason");
 				}
 			}
-			catch (XmlException exception)
+			catch (XmlTransformationException xmlTransformationException)
 			{
-				return Content(
-					new XDocument(
-						new XElement("error",exception.Message)
-					).ToString(),
-					"text/xml");
+				return ErrorXml(xmlTransformationException.Message);
 			}
+			catch (XmlException xmlException)
+			{
+				return ErrorXml(xmlException.Message);
+			}
+		}
+
+		private ContentResult ErrorXml(string errorMessage)
+		{
+			return Content(
+					new XDocument(
+						new XElement("error", errorMessage)
+				).ToString(), "text/xml");
 		}
 	}
 }
