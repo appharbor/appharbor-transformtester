@@ -31,5 +31,9 @@ namespace AppHarbor.TransformTester.Transforms
 			}
 		}
 
+		protected virtual void InsertTransformElement(XmlElement targetElement, XmlElement transformElement)
+		{
+			targetElement.AppendChild(transformElement);
+		}
 	}
 }
