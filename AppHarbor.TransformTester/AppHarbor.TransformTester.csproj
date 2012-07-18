@@ -73,6 +73,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Transforms\Merge.cs" />
+    <Compile Include="Transforms\MergeTop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\1140.css" />
