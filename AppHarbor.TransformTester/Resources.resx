@@ -121,6 +121,13 @@
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform"&gt;
   &lt;xdt:Import assembly="AppHarbor.TransformTester" namespace="AppHarbor.TransformTester.Transforms"/&gt;
+
+  &lt;connectionStrings xdt:Transform="Merge" /&gt;
+
+  &lt;connectionStrings&gt;
+    &lt;add name="bar" connectionString="value" xdt:Transform="Insert"/&gt;
+  &lt;/connectionStrings&gt;
+
   &lt;system.web&gt;
       &lt;customErrors mode="On" xdt:Transform="Replace"&gt;
       &lt;/customErrors&gt;
@@ -130,6 +137,9 @@
   <data name="DefaultWebConfig" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration&gt;
+  &lt;connectionStrings&gt;
+    &lt;add name="foo" connectionString="value"/&gt;
+  &lt;/connectionStrings&gt;
   &lt;system.web&gt;
     &lt;customErrors mode="Off"/&gt;
   &lt;/system.web&gt;
