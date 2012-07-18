@@ -16,7 +16,7 @@ namespace AppHarbor.TransformTester.Transforms
 			Apply((XmlElement)TargetNode, (XmlElement)TransformNode);
 		}
 
-		public static void Apply(XmlElement targetElement, XmlElement transformElement)
+		public void Apply(XmlElement targetElement, XmlElement transformElement)
 		{
 			var targetChildElement = targetElement.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.LocalName == transformElement.LocalName);
 			if (targetChildElement == null)
