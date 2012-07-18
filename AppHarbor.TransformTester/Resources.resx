@@ -120,6 +120,7 @@
   <data name="DefaultTransformation" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform"&gt;
+  &lt;xdt:Import assembly="AppHarbor.TransformTester" namespace="AppHarbor.TransformTester.Transforms"/&gt;
   &lt;system.web&gt;
       &lt;customErrors mode="On" xdt:Transform="Replace"&gt;
       &lt;/customErrors&gt;

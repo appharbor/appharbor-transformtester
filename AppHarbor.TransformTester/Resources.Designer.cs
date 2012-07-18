@@ -63,6 +63,7 @@ namespace AppHarbor.TransformTester {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;configuration xmlns:xdt=&quot;http://schemas.microsoft.com/XML-Document-Transform&quot;&gt;
+        ///  &lt;xdt:Import assembly=&quot;AppHarbor.TransformTester&quot; namespace=&quot;AppHarbor.TransformTester.Transforms&quot;/&gt;
         ///  &lt;system.web&gt;
         ///      &lt;customErrors mode=&quot;On&quot; xdt:Transform=&quot;Replace&quot;&gt;
         ///      &lt;/customErrors&gt;
