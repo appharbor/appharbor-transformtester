@@ -21,7 +21,7 @@ namespace AppHarbor.TransformTester.Transforms
 			var targetChildElement = targetElement.ChildNodes.OfType<XmlElement>().FirstOrDefault(x => x.LocalName == transformElement.LocalName);
 			if (targetChildElement == null)
 			{
-				targetElement.AppendChild(transformElement);
+				InsertTransformElement(targetElement, transformElement);
 				return;
 			}
 
