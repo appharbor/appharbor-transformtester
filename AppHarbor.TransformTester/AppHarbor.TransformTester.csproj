@@ -72,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Transforms\Merge.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\1140.css" />
