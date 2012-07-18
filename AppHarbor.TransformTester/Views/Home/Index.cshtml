@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Web.config Transformation Tester";
+	ViewBag.Title = "Web.config Transformation Tester";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -94,11 +94,11 @@
 			$.post('transform',
 				{ webConfigXml: configEditor.getCode(), transformXml: transformEditor.getCode() },
 				function (result, status, jqXHR) {
-				    resultEditor.setCode(jqXHR.responseText);
+					resultEditor.setCode(jqXHR.responseText);
 				})
-                .error(function (jqXHR, textStatus, errorThrown) {
-                    resultEditor.setCode(jqXHR.responseText);
-                });
+				.error(function (jqXHR, textStatus, errorThrown) {
+					resultEditor.setCode(jqXHR.responseText);
+				});
 		}
 
 		function editor(id) {
