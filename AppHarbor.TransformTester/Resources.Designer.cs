@@ -64,18 +64,17 @@ namespace AppHarbor.TransformTester {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;configuration xmlns:xdt=&quot;http://schemas.microsoft.com/XML-Document-Transform&quot;&gt;
         ///  &lt;xdt:Import assembly=&quot;AppHarbor.TransformTester&quot; namespace=&quot;AppHarbor.TransformTester.Transforms&quot;/&gt;
+        ///  
+        ///  &lt;configSections xdt:Transform=&quot;MergeBefore(/configuration/*)&quot; /&gt;
         ///
+        ///  &lt;configSections&gt;
+        ///    &lt;section name=&quot;mySection&quot; xdt:Transform=&quot;Insert&quot; /&gt;
+        ///  &lt;/configSections&gt;
+        ///  
         ///  &lt;connectionStrings xdt:Transform=&quot;Merge&quot; /&gt;
         ///
         ///  &lt;connectionStrings&gt;
-        ///    &lt;add name=&quot;bar&quot; connectionString=&quot;value&quot; xdt:Transform=&quot;Insert&quot;/&gt;
-        ///  &lt;/connectionStrings&gt;
-        ///
-        ///  &lt;system.web&gt;
-        ///      &lt;customErrors mode=&quot;On&quot; xdt:Transform=&quot;Replace&quot;&gt;
-        ///      &lt;/customErrors&gt;
-        ///  &lt;/system.web&gt;
-        ///&lt;/configuration&gt;.
+        ///    &lt;add name=&quot;bar&quot; connectionString=&quot;value&quot; xdt:Transfor [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DefaultTransformation {
             get {
