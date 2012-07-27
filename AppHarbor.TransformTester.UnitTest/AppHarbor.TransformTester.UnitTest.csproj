@@ -12,6 +12,8 @@
     <AssemblyName>AppHarbor.TransformTester.UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.Publishing.Tasks">
+      <HintPath>..\lib\MSBuild\Microsoft.Web.Publishing.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -38,12 +43,28 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transforms\MergeTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppHarbor.TransformTester\AppHarbor.TransformTester.csproj">
+      <Project>{8ABFCE9D-669D-42C3-B6F4-24DA052DD239}</Project>
+      <Name>AppHarbor.TransformTester</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
