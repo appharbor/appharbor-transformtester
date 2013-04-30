@@ -1,8 +1,8 @@
-﻿using System.Text;
+﻿using Microsoft.Web.XmlTransform;
+using System.Text;
 using System.Web.Mvc;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.Web.Publishing.Tasks;
 
 namespace AppHarbor.TransformTester.Controllers
 {
@@ -14,26 +14,30 @@ namespace AppHarbor.TransformTester.Controllers
 		{
 			try
 			{
-				var transformation = new XmlTransformation(transformXml, false, null);
-				var document = new XmlDocument();
-				document.LoadXml(webConfigXml);
-				var success = transformation.Apply(document);
-				if (success)
+				using (var document = new XmlTransformableDocument())
 				{
-					var stringBuilder = new StringBuilder();
-					var xmlWriterSettings = new XmlWriterSettings();
-					xmlWriterSettings.Indent = true;
-					xmlWriterSettings.IndentChars = "    ";
-					using (var xmlTextWriter =
-						XmlTextWriter.Create(stringBuilder, xmlWriterSettings))
+					document.PreserveWhitespace = true;
+					document.LoadXml(webConfigXml);
+
+					using (var transform = new XmlTransformation(transformXml, false, null))
 					{
-						document.WriteTo(xmlTextWriter);
+						if (transform.Apply(document))
+						{
+							var stringBuilder = new StringBuilder();
+							var xmlWriterSettings = new XmlWriterSettings();
+							xmlWriterSettings.Indent = true;
+							xmlWriterSettings.IndentChars = "    ";
+							using (var xmlTextWriter = XmlTextWriter.Create(stringBuilder, xmlWriterSettings))
+							{
+								document.WriteTo(xmlTextWriter);
+							}
+							return Content(stringBuilder.ToString(), "text/xml");
+						}
+						else
+						{
+							return ErrorXml("Transformation failed for unkown reason");
+						}
 					}
-					return Content(stringBuilder.ToString(), "text/xml");
-				}
-				else
-				{
-					return ErrorXml("Transformation failed for unkown reason");
 				}
 			}
 			catch (XmlTransformationException xmlTransformationException)
