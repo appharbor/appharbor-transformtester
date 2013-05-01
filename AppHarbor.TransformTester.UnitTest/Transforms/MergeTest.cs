@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using AppHarbor.TransformTester.Transforms;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using AppHarbor.TransformTester.Transforms;
 using Xunit;
 using Xunit.Extensions;
 
