@@ -6,6 +6,7 @@ using System.Xml.Linq;
 
 namespace AppHarbor.TransformTester.Controllers
 {
+	[RequireHttps]
 	public class TransformController : Controller
 	{
 		[HttpPost]
