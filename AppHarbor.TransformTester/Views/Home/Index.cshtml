@@ -91,7 +91,7 @@
 
 		function transform() {
 			resultEditor.setCode('');
-			$.post('transform',
+			$.post('@Url.Content("~/transform")',
 				{ webConfigXml: configEditor.getCode(), transformXml: transformEditor.getCode() },
 				function (result, status, jqXHR) {
 					resultEditor.setCode(jqXHR.responseText);
@@ -104,8 +104,8 @@
 		function editor(id) {
 			return CodeMirror.fromTextArea(id, {
 				parserfile: "parsexml.js",
-				stylesheet: "assets/css/xmlcolors.css",
-				path: "assets/js/codemirror/",
+				stylesheet: "@Url.Content("~/assets/css/xmlcolors.css")",
+				path: "@Url.Content("~/assets/js/codemirror/")",
 				continuousScanning: 500,
 				lineNumbers: true
 			});
