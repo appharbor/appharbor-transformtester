@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.TransformTester", "AppHarbor.TransformTester\AppHarbor.TransformTester.csproj", "{8ABFCE9D-669D-42C3-B6F4-24DA052DD239}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHarbor.TransformTester.UnitTest", "AppHarbor.TransformTester.UnitTest\AppHarbor.TransformTester.UnitTest.csproj", "{B9C51963-207D-477E-82DA-949637D71A2B}"
